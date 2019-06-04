@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  devenv:
+    image: devenv
+    build:
+      context: .
+    container_name: devenv
+    command: tmux
+    stdin_open: true
+    tty: true
