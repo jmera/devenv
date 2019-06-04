@@ -5,7 +5,12 @@ services:
     build:
       context: .
     container_name: devenv
-    # -u => utf-8
-    command: tmux -u
+    environment:
+      - LC_ALL="en_US.UTF-8"
+    volumes:
+      - workspace:/home/dev/workspace
+    command: tmux
     stdin_open: true
     tty: true
+volumes:
+  workspace:
