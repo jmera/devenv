@@ -1,6 +1,17 @@
 FROM ubuntu:latest
 
-RUN apt-get update && apt-get install --yes git tmux vim ruby ruby-dev build-essential tig zsh curl
+RUN apt-get update && \
+      apt-get install --yes \
+        build-essential \
+        curl \
+        git \
+        man \
+        ruby \
+        ruby-dev \
+        tig \
+        tmux \
+        vim \
+        zsh
 RUN git clone https://github.com/jmera/dotfiles.git /root/dotfiles --verbose
 
 WORKDIR /root/dotfiles

@@ -5,6 +5,7 @@ services:
     build:
       context: .
     container_name: devenv
-    command: tmux
+    # -u => utf-8
+    command: tmux -u
     stdin_open: true
     tty: true
