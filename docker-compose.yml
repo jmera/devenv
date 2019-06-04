@@ -8,9 +8,13 @@ services:
     environment:
       - LC_ALL="en_US.UTF-8"
     volumes:
-      - workspace:/home/dev/workspace
+      - home:/home/dev/
+      - workspace:/home/dev/workspace/
+    working_dir: /home/dev/workspace/
     command: tmux
     stdin_open: true
     tty: true
+
 volumes:
+  home:
   workspace:
