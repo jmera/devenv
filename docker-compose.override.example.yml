@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  devenv:
+    volumes:
+      - your-volume:/home/dev/workspace/your-app-directory
+      - /path-to-.ssh-directory:/home/dev/.ssh
+
+volumes:
+  your-volume:
+
+networks:
+  default:
+    external:
+      name: your-applications-network
