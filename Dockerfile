@@ -1,13 +1,12 @@
 FROM ubuntu:latest
 
-ENV LC_ALL=en_US.UTF-8 TERM=xterm-256color
+ENV LC_ALL=en_US.UTF-8 TERM=xterm-256color DISPLAY=host.docker.internal:0
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install --yes \
       build-essential \
       curl \
       git \
       man \
-      netcat \
       ruby \
       ruby-dev \
       silversearcher-ag \
