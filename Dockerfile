@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:disco
 
 ENV DISPLAY=host.docker.internal:0 \
     LANG=en_US.UTF-8 \
