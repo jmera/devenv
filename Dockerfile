@@ -17,12 +17,14 @@ RUN apt-get update && \
 RUN useradd dev --create-home --shell $(which zsh)
 USER dev
 
-ENV DOTFILES_DIR=/home/dev/workspace/dotfiles
-RUN git clone https://github.com/jmera/dotfiles.git $DOTFILES_DIR --verbose
-WORKDIR $DOTFILES_DIR
-RUN bash -c "./install.sh"
+RUN mkdir /home/dev/workspace/ && \
+    cd /home/dev/workspace/ && \
+    git clone https://github.com/jmera/dotfiles.git --verbose && \
+    cd dotfiles/ && \
+    bash -c "./install.sh"
 
-WORKDIR /home/dev/
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+WORKDIR /home/dev/workspace
 RUN chown -R dev:dev /home/dev
+CMD tmux
