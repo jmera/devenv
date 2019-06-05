@@ -10,6 +10,7 @@ RUN apt-get update && \
       netcat \
       ruby \
       ruby-dev \
+      silversearcher-ag \
       tig \
       tmux \
       vim-gtk \
