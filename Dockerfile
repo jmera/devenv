@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-ENV LC_ALL=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8 TERM=xterm-256color
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install --yes \
       build-essential \
