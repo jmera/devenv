@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 ENV LC_ALL=en_US.UTF-8
 RUN apt-get update && \
-      apt-get install --yes \
+      DEBIAN_FRONTEND=noninteractive apt-get install --yes \
         build-essential \
         curl \
         git \
@@ -11,7 +11,7 @@ RUN apt-get update && \
         ruby-dev \
         tig \
         tmux \
-        vim \
+        vim-nox \
         zsh
 
 RUN useradd dev --create-home --shell $(which zsh)
