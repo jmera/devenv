@@ -7,11 +7,12 @@ RUN apt-get update && \
       curl \
       git \
       man \
+      netcat \
       ruby \
       ruby-dev \
       tig \
       tmux \
-      vim-nox \
+      vim-gtk \
       zsh
 
 RUN useradd dev --create-home --shell $(which zsh)
