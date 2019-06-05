@@ -1,11 +1,16 @@
 FROM ubuntu:latest
 
-ENV LC_ALL=en_US.UTF-8 TERM=xterm-256color DISPLAY=host.docker.internal:0
+ENV DISPLAY=host.docker.internal:0 \
+    LANG=en_US.UTF-8 \
+    LANGUAGE=en_US.UTF-8 \
+    LC_ALL=en_US.UTF-8 \
+    TERM=xterm-256color
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install --yes \
       build-essential \
       curl \
       git \
+      locales \
       man \
       ruby \
       ruby-dev \
@@ -14,6 +19,7 @@ RUN apt-get update && \
       tmux \
       vim-gtk \
       zsh
+RUN locale-gen en_US.UTF-8
 
 RUN useradd dev --create-home --shell $(which zsh)
 USER dev
