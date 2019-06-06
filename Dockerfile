@@ -11,7 +11,6 @@ RUN apt-get update && \
       ruby-dev \
       silversearcher-ag \
       tig \
-      tmux \
       vim-gtk \
       zsh
 RUN rm -rf /var/lib/apt/lists/*
@@ -33,4 +32,4 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh
 
 WORKDIR /home/dev/workspace
 RUN chown -R dev:dev /home/dev
-CMD tmux
+CMD zsh
