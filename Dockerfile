@@ -2,7 +2,7 @@ FROM ubuntu:disco
 
 RUN yes | unminimize && apt-get update && \
       DEBIAN_FRONTEND=noninteractive apt-get install --yes \
-      --no-install-recommends build-essential curl git locales man ruby \
+      --no-install-recommends build-essential curl git less locales man ruby \
       ruby-dev silversearcher-ag tig vim-gtk xclip zsh && \
       rm -rf /var/lib/apt/lists/*
 
