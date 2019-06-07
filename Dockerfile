@@ -1,5 +1,4 @@
 FROM ubuntu:disco
-
 RUN yes | unminimize && apt-get update && \
       DEBIAN_FRONTEND=noninteractive apt-get install --yes \
       --no-install-recommends build-essential curl git less locales man ruby \
@@ -8,6 +7,8 @@ RUN yes | unminimize && apt-get update && \
 
 RUN localedef --alias-file=/usr/share/locale/locale.alias en_US.UTF-8 \
     --inputfile=en_US --force --charmap=UTF-8 && locale-gen en_US.UTF-8
+
+RUN chmod +x /usr/share/doc/git/contrib/diff-highlight/diff-highlight
 
 ENV DISPLAY=host.docker.internal:0 LANG=en_US.utf8 TERM=xterm-256color
 
