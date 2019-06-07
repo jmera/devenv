@@ -8,7 +8,8 @@ RUN yes | unminimize && apt-get update && \
 RUN localedef --alias-file=/usr/share/locale/locale.alias en_US.UTF-8 \
     --inputfile=en_US --force --charmap=UTF-8 && locale-gen en_US.UTF-8
 
-RUN chmod +x /usr/share/doc/git/contrib/diff-highlight/diff-highlight
+RUN chmod +x /usr/share/doc/git/contrib/diff-highlight/diff-highlight && \
+    ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight /usr/bin/
 
 ENV DISPLAY=host.docker.internal:0 LANG=en_US.utf8 TERM=xterm-256color
 
