@@ -3,10 +3,11 @@ services:
   devenv:
     image: jmera/devenv
     container_name: devenv
-    volumes:
-      - workspace:/home/dev/workspace/
     stdin_open: true
     tty: true
+    volumes:
+      - workspace:/home/dev/workspace/
+    working_dir: /home/dev/workspace/
 
 volumes:
   workspace:
