@@ -1,9 +1,7 @@
 version: "3.7"
 services:
   devenv:
-    image: devenv
-    build:
-      context: .
+    image: jmera/devenv
     container_name: devenv
     volumes:
       - workspace:/home/dev/workspace/
