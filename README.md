@@ -40,7 +40,7 @@ $ docker attach devenv
 After your are done with development, detach with `<ctrl+p>,<ctrl+q>`. `<ctrl+c>` will stop the container completely.
 
 # Working with an existing docker-compose.yml
-If you have an existing Docker project you can easily expose a subdirectory of your workspace so your application can consume it. After you've cloned your project in the devenv container, create a docker-compose.override.yml to expose it.
+If you have an existing Docker project you can easily expose a subdirectory of your workspace so your application can consume it. Create a docker-compose.override.yml to expose the volume your app will consume.
 ```yml
 version: "3.7"
 services:
@@ -48,10 +48,18 @@ services:
     volumes:
       - my-app:/home/dev/workspace/my-app
       - /Users/jmera/.ssh:/home/dev/.ssh
-    working_dir: /home/dev/workspace/se
+    working_dir: /home/dev/workspace/my-app
 
 volumes:
   my-app:
+```
+
+In the host machine, make sure to restart devenv. Also make sure permissions are set correctly. Lastly clone your repo.
+```zsh
+$ docker-compose up -d
+$ docker exec -u root devenv chown -R dev:dev /home/dev/workspace/my-app/
+$ docker attach devenv
+➜ git clone https://github.com/jmera/my-app.git # note change in working_dir
 ```
 
 Update your application's docker-compose.yml or docker-compose.override.yml to consume that volume.
@@ -66,7 +74,7 @@ volumes:
   devenv_my-app: { external: true }
 ```
 
-Remember to `docker-compose up -d` in both projects for these changes to take effect.
+And remember to `docker-compose up` in that that project as well for changes to take effect
 
 # X11 support
 TODO
