@@ -20,7 +20,7 @@ So one day I decided to get rid of bind mounts completely by moving my entire de
 # Usage
 Clone the repo, docker-compose up
 
-```
+```zsh
 $ git clone git@github.com:jmera/devenv.git
 # if you prefer HTTP: https://github.com/jmera/devenv.git
 $ cd devenv
@@ -30,11 +30,11 @@ $ docker-compose up --detach
 All work should go in your workspace (also the default working directory): `/home/dev/workspace/`. Changes made here will be persisted between runs in a volume named `devenv_workspace`.
 
 Attach your local standard input/output/error streams to devenv. Create the directory where your project will live.
-```
+```zsh
 $ docker attach devenv
 # Inside devenv, for example
-➜  workspace take my-app/
-➜  my-app git init # then hack away
+➜ take my-app/
+➜ git init # then hack away
 ```
 
 After your are done with development, detach with `<ctrl+p>,<ctrl+q>`. `<ctrl+c>` will stop the container completely.
