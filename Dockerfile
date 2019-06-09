@@ -14,15 +14,15 @@ RUN chmod +x /usr/share/doc/git/contrib/diff-highlight/diff-highlight && \
 ENV DISPLAY=host.docker.internal:0 LANG=en_US.utf8 TERM=xterm-256color
 
 RUN useradd dev --create-home --shell $(which zsh)
-USER dev
 
-RUN mkdir /home/dev/workspace/ && cd /home/dev/workspace/ && \
-    git clone https://github.com/jmera/dotfiles.git --verbose && \
-    cd dotfiles/ && ./install
+RUN cd /home/dev/ && git clone --verbose \
+      https://github.com/jmera/dotfiles.git .dotfiles/ && \
+      cd .dotfiles/ && ./install
 
 # https://github.com/robbyrussell/oh-my-zsh
 RUN sh -c "$(curl -fsSL https://bit.ly/1PMPJgO)"
 
-WORKDIR /home/dev/workspace
 RUN chown -R dev:dev /home/dev
+
+USER dev
 CMD zsh
