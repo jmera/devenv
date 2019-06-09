@@ -15,6 +15,7 @@ ENV DISPLAY=host.docker.internal:0 LANG=en_US.utf8 TERM=xterm-256color
 
 RUN useradd dev --create-home --shell $(which zsh)
 
+USER dev
 RUN cd /home/dev/ && git clone --verbose \
       https://github.com/jmera/dotfiles.git .dotfiles/ && \
       cd .dotfiles/ && ./install
@@ -23,6 +24,4 @@ RUN cd /home/dev/ && git clone --verbose \
 RUN sh -c "$(curl -fsSL https://bit.ly/1PMPJgO)"
 
 RUN chown -R dev:dev /home/dev
-
-USER dev
 CMD zsh
