@@ -23,5 +23,5 @@ RUN cd /home/dev/ && git clone --verbose \
 # https://github.com/robbyrussell/oh-my-zsh
 RUN sh -c "$(curl -fsSL https://bit.ly/1PMPJgO)"
 
-RUN chown -R dev:dev /home/dev
+RUN mkdir /home/dev/workspace/ && chown -R dev:dev /home/dev
 CMD zsh
