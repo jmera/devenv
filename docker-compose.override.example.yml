@@ -2,13 +2,10 @@ version: "3.7"
 services:
   devenv:
     volumes:
-      - your-volume:/home/dev/workspace/your-app-directory
-      - /path-to-.ssh-directory:/home/dev/.ssh
+      - /Users/jmera/.ssh:/home/dev/.ssh
+      - home:/home/dev/
+      - app:/home/dev/workspace/app
 
 volumes:
-  your-volume:
-
-networks:
-  default:
-    external:
-      name: your-applications-network
+  home:
+  react:
