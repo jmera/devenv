@@ -76,5 +76,32 @@ volumes:
 
 And remember to `docker-compose up` in that that project as well for changes to take effect
 
-# X11 support
-TODO
+# X11 (GUI) support :construction:
+Things like copying to the clipboard and running a GUI application in devenv and using your host machine's display as the target is fairly straightforward but does require some configuration. In general, regardless of your OS the steps are as follows:
+
+1. Install and start an X Server
+2. Configure the X Server to allow connections from network clients
+3. Add 127.0.0.1 (devenv) to the list of allowed hosts
+
+### Instructions for macOS
+1. Install [XQuartz](https://www.xquartz.org/) and start it up. If you're using [homebrew](https://brew.sh/) install GUI applications with `brew cask`.
+```
+$ brew cask install xquartz
+$ launchctl load /Library/LaunchAgents/org.macosforge.xquartz.startx.plist
+```
+
+2. Launch XQuartz (`open -a xquartz`), open preferences (`⌘,`), select the "Security" tab and click the checkbox to configure XQuartz to allow connections from network clients.
+
+3. Add 127.0.0.1 to the list of allowed hosts
+```
+$ xhost + 127.0.0.1
+```
+You can also add this line to your shell's .rc file. For example:
+```
+$ echo "xhost + 127.0.0.1" >> ~/.zshrc # or .bashrc depending on your setup
+```
+
+### Examples
+```
+$ docker run --rm jmera/devenv echo -n $(whoami) | xclip -sel clip
+```
