@@ -102,6 +102,4 @@ $ echo "xhost + 127.0.0.1" >> ~/.zshrc # or .bashrc depending on your setup
 ```
 
 ### Examples
-```
-$ docker run --rm jmera/devenv echo -n $(whoami) | xclip -sel clip
-```
+:construction:
