@@ -96,7 +96,7 @@ $ launchctl load /Library/LaunchAgents/org.macosforge.xquartz.startx.plist
 ```
 $ xhost + 127.0.0.1
 ```
-You can also add this line to your shell's .rc file. For example:
+~You can also add this line to your shell's .rc file. For example:~
 ```
 $ echo "xhost + 127.0.0.1" >> ~/.zshrc # or .bashrc depending on your setup
 ```
