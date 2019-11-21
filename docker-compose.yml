@@ -7,6 +7,7 @@ services:
     tty: true
     volumes:
       - workspace:/home/dev/workspace/
+      - .:/home/dev/workspace/devenv/:delegated
     working_dir: /home/dev/workspace/
 
 volumes:
