@@ -46,4 +46,4 @@ RUN sh -c "$(curl -fsSL https://bit.ly/1PMPJgO)"
 RUN mkdir /home/dev/workspace/ && \
   chown -R dev:dev /home/dev
 WORKDIR /home/dev/
-CMD ["/usr/bin/zsh"]
+ENTRYPOINT ["/usr/bin/zsh"]

@@ -1,11 +1,13 @@
 version: "3.7"
 services:
   devenv:
-    image: jmera/devenv:latest
     container_name: devenv
+    image: jmera/devenv:latest
+    stdin_open: true
+    tty: true
     volumes:
-      - workspace:/home/dev/workspace/
       - .:/home/dev/workspace/devenv/:delegated
+      - workspace:/home/dev/workspace/
     working_dir: /home/dev/workspace/
 
 volumes:
